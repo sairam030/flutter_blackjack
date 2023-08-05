@@ -2,7 +2,7 @@ import 'package:playing_cards/playing_cards.dart';
 
 import '../models/player_model.dart';
 
-enum GameState { playerActive, playerWon, dealerWon, equal }
+enum GameState { playerActive, playerWon, dealerWon, equal, endTurn, canPlaceBet }
 
 abstract class GameService {
   void startNewGame();

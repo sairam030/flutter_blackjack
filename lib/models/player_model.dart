@@ -1,8 +1,9 @@
 import 'dart:math';
 
+import 'package:flutter/material.dart';
 import 'package:playing_cards/playing_cards.dart';
 
-const START_MONEY = 10000;
+const START_MONEY = 500;
 const BET_STEPS = 500;
 const BET_MULTIPLICATOR = 2;
 
@@ -26,7 +27,7 @@ class Player {
     return newBet;
   }
 
-  int setBeLower() {
+  int setBetLower() {
     final newBet = bet - BET_STEPS;
     if (newBet <= 0) {
       return BET_STEPS;
@@ -35,12 +36,16 @@ class Player {
     return newBet;
   }
 
+  bool canPlaceBet() {
+    return bet <= wallet;
+  }
+
   void wonBet() {
     wallet += bet * BET_MULTIPLICATOR;
   }
 
   void lostBet() {
-    final newWallet = wallet -= bet;
+    final newWallet = wallet - bet;
     if (newWallet <= 0) {
       wallet = START_MONEY;
     } else {
@@ -48,3 +53,6 @@ class Player {
     }
   }
 }
+
+
+
